@@ -2,8 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body class="container">
+    <h1>Simon</h1>
+    <button id="green"></button>
+    <button id="red"></button>
+    <button id="yellow"></button>
+    <button id="blue"></button>
+    <div id="count">
+    </div>
+    <p>Count</p>
+    <button id="start"></button>
+    <p>Start</p>
+    <div id="strictLight">
+    </div>
+    <button id="strict" onclick="toggleStrict()"></button>
+    <p>Strict</p>
+    <p>off</p>
+    <div id="onContainer" onclick="toggleOn()">
+      <button id="off"></button>
+      <button id="on"></button>
+    </div>
+    <p>on</p>
     <script type="text/javascript" src="app/app.js"></script>
   </body>
 </html>
