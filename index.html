@@ -6,14 +6,14 @@
   </head>
   <body class="container">
     <h1>Simon</h1>
-    <button id="green"></button>
-    <button id="red"></button>
-    <button id="yellow"></button>
-    <button id="blue"></button>
+    <button id="green" onmousedown="mouseDown(green)" onmouseup="mouseUp(green)" onclick="greenButton()"></button>
+    <button id="red" onmousedown="mouseDown(red)" onmouseup="mouseUp(red)" onclick="redButton()"></button>
+    <button id="yellow" onmousedown="mouseDown(yellow)" onmouseup="mouseUp(yellow)" onclick="yellowButton()"></button>
+    <button id="blue" onmousedown="mouseDown(blue)" onmouseup="mouseUp(blue)" onclick="blueButton()"></button>
     <div id="count">
     </div>
     <p>Count</p>
-    <button id="start"></button>
+    <button id="start" onclick="onStart()"></button>
     <p>Start</p>
     <div id="strictLight">
     </div>
