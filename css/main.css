@@ -1,67 +1,89 @@
-#green, #red, #yellow, #blue {
+#green {
+  background: green;
   width: 100px;
   height: 100px;
 }
 
-#green {
-  background: green;
+#blue {
+  background: #0000b2;
+  width: 100px;
+  height: 100px;
 }
 
 #red {
-  background: #c00;
+  background: #c00;;
+  width: 100px;
+  height: 100px;
 }
 
 #yellow {
-  background: #e5e500;
-}
-
-#blue {
-  background: #0000b2;
-}
-
-#count {
-  width: 50px;
-  height: 50px;
-  background: #300;
-}
-
-#start {
-  background: red;
-}
-
-#strict {
-  background: yellow;
+  background: #e5e500;;
+  width: 100px;
+  height: 100px;
 }
 
 #strictLight {
+  background: black;
   width: 10px;
   height: 10px;
-  background: black;
+  margin-left: 158px;
+  border-radius: 5px;
 }
 
-#on, #off {
-  background: #00E5EE;
+#countDisplay {
+  background: black;
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 5px;
+  color: red;
+}
+
+#startButton {
+  background: red;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+}
+
+#strictButton {
+  background: yellow;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+}
+
+#onButton, #offButton {
+  background: #00e5ee;
   width: 20px;
   height: 20px;
+  border-radius: 3px;
 }
 
-#onContainer {
-  background: black;
-  width: 40px;
-  height: 20px;
-  display: inline-block;
-}
-
-#off {
-  display: inline-block;;
-  float: left;
-}
-
-#on {
+#onButton {
   display: none;
   float: right;
 }
 
+#offButton {
+  float: left;
+}
+
 p {
   display: inline-block;
+}
+
+#simonOptions {
+  width: 250px;
+  height: 250px;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 50%;
+}
+
+#onOffContainer {
+  background: black;
+  display: inline-block;
+  border-radius: 3px;
+  width: 40px;
 }

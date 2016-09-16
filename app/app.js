@@ -1,141 +1,146 @@
-const on = document.getElementById("on");
-const off = document.getElementById("off");
-const strict = document.getElementById("strictLight");
-let isOn = false;
-let isOff = true;
-let count = 0;
-let num;
-//const green = document.getElementById("green");
+//buttons
+const greenButton = document.getElementById('green');
+const redButton = document.getElementById('red');
+const yellowButton = document.getElementById('yellow');
+const blueButton = document.getElementById('blue');
+const onButton = document.getElementById("onButton");
+const offButton = document.getElementById("offButton");
 
-const colors = ["red", "blue", "green", "yellow"];
-const userColors = [];
+
+//arrays
+let userColors = [];
 const computerColors = [];
+const colors = ["green", "red", "yellow", "blue"];
 
-//why do i have to set these in my javascript
-off.style.display = "inline-block";
-strict.style.background = "black";
+let randomNumber;
+let count = 0;
 
-function toggleOn() {
-  if (on.style.display === "inline-block") {
-    off.style.display = "inline-block";
-    on.style.display = "none";
-    isOff = true;
-    isOn = false;
-  } else {
-    on.style.display = "inline-block";
-    off.style.display = "none";
-    isOff = false;
-    isOn = true;
+function clickedColor(color) {
+  console.log(count);
+  userColors.push(color);
+  count++;
+  console.log(userColors);
+
+  for (let i = 0; i < userColors.length; i++) {
+    checkColors(userColors.length - 1);
+  }
+
+  if (userColors.length === computerColors.length) {
+    randomNumber = Math.floor(Math.random() * 4);
+    computerColors.push(colors[randomNumber]);
+    console.log("computer colors: " + computerColors);
+
+    //bright(colors[randomNumber]);
+    colorSequence(computerColors);
+    userColors = [];
+    count = 0;
   }
 }
 
-function toggleStrict() {
-  if (strict.style.background === "black")
-  {
-    strict.style.background = "red";
-  } else {
-    strict.style.background = "black";
+function buttonHeldDown(color) {
+  if (color === "green") {
+    greenButton.style.filter = "brightness(3)";
+  } else if (color === "red") {
+    redButton.style.filter = "brightness(3)";
+  } else if (color === "yellow") {
+    yellowButton.style.filter = "brightness(3)";
+  } else if (color === "blue") {
+    blueButton.style.filter = "brightness(3)";
   }
 }
 
-// ai code
-// function show(color) {
-//   color.style.filter = "brightness(3)";
-//   window.setTimeout(function(){
-//     color.style.filter = "brightness(1)";
-//   }, 2000);
+function buttonReleased(color) {
+  if (color === "green") {
+    greenButton.style.filter = "brightness(1)";
+  } else if (color === "red") {
+    redButton.style.filter = "brightness(1)";
+  } else if (color === "yellow") {
+    yellowButton.style.filter = "brightness(1)";
+  } else if (color === "blue") {
+    blueButton.style.filter = "brightness(1)";
+  }
+}
+
+function checkColors(count) {
+  console.log(count);
+
+  //for (let i = 0; i < userColors.length; i++) {
+    if (userColors[count] !== computerColors[count]) {
+      alert("you lose!");
+    }
+  //}
+}
+
+// function clicked(color) {
+//   userColors.push(color);
+//   //count++;
+//   //console.log("user colors: " + userColors);*******
+//
+//   randomNumber = Math.floor(Math.random() * 4);
+//   computerColors.push(colors[randomNumber]);
+//   console.log("computer colors: " + computerColors);
+//
+//   //bright(colors[randomNumber]);
+//   colorSequence(computerColors);
 // }
 
-function mouseDown(color) {
-  color.style.filter = "brightness(3)";
-}
-
-function mouseUp(color) {
-  color.style.filter = "brightness(1)";
-}
-
-function greenButton() {
-  userColors.push("green");
-  console.log(userColors);
-  console.log(computerColors);
-  if (userColors[count] === computerColors[count]) {
-    count++;
-    console.log(count);
-    num = Math.floor(Math.random() * 4);
-    computerColors.push(colors[num]);
-    console.log(computerColors);
-  }
-  else {
-    console.log("lose");
+function colorSequence(array) {
+  for (let i = 0; i < array.length; i++) {
+    setTimeout(function() {bright(array[i])}, 1000 + (i * 3000));
   }
 }
 
-function redButton() {
-  userColors.push("red");
-  console.log(userColors);
-  console.log(computerColors);
-  if (userColors[count] === computerColors[count]) {
-    count++;
-    console.log(count);
-    num = Math.floor(Math.random() * 4);
-    computerColors.push(colors[num]);
-    console.log(computerColors);
-  }
-  else {
-    console.log("lose");
-  }
-}
-
-function yellowButton() {
-  userColors.push("yellow");
-  console.log(userColors);
-  console.log(computerColors);
-  if (userColors[count] === computerColors[count]) {
-    count++;
-    console.log(count);
-    num = Math.floor(Math.random() * 4);
-    computerColors.push(colors[num]);
-    console.log(computerColors);
-  }
-  else {
-    console.log("lose");
+//makes the color button brighter
+function bright(color) {
+  if (color === "green") {
+    greenButton.style.filter = "brightness(3)";
+    setTimeout(function() {dark("green")}, 2000);
+  } else if (color === "red") {
+    redButton.style.filter = "brightness(3)";
+    setTimeout(function() {dark("red")}, 2000);
+  } else if (color === "yellow") {
+    yellowButton.style.filter = "brightness(3)";
+    setTimeout(function() {dark("yellow")}, 2000);
+  } else if (color === "blue") {
+    blueButton.style.filter = "brightness(3)";
+    setTimeout(function() {dark("blue")}, 2000);
   }
 }
 
-function blueButton() {
-  userColors.push("blue");
-  console.log(userColors);
-  console.log(computerColors);
-  if (userColors[count] === computerColors[count]) {
-    count++;
-    console.log(count);
-    num = Math.floor(Math.random() * 4);
-    computerColors.push(colors[num]);
-    console.log(computerColors);
-  }
-  else {
-    console.log("lose");
+//makes the button darker
+function dark(color) {
+  if (color === "green") {
+    greenButton.style.filter = "brightness(1)";
+  } else if (color === "red") {
+    redButton.style.filter = "brightness(1)";
+  } else if (color === "yellow") {
+    yellowButton.style.filter = "brightness(1)";
+  } else if (color === "blue") {
+    blueButton.style.filter = "brightness(1)";
   }
 }
 
-function onStart() {
-  if (isOn) {
-    console.log("on");
-    //gameStart();
-    num = Math.floor(Math.random() * 4);
-    computerColors.push(colors[num]);
-    console.log(computerColors);
+//first
+randomNumber = Math.floor(Math.random() * 4);
+computerColors.push(colors[randomNumber]);
+console.log("computer colors: " + computerColors);
+
+//first stage
+//bright(colors[randomNumber]);
+colorSequence(computerColors);
+
+//game functionality completed***************************
+
+offButton.style.display = "inline-block";
+onButton.style.display = "none";
+
+function onOffClick() {
+  console.log("hi");
+  if (onButton.style.display === "none") {
+    onButton.style.display = "inline-block";
+    offButton.style.display = "none";
+  } else {
+    offButton.style.display = "inline-block";
+    onButton.style.display = "none";
   }
 }
-
-// function gameStart() {
-//   console.log("game");
-//   for (var i = 0; i < count; i++) {
-//     num = Math.floor(Math.random() * 4);
-//     console.log(colors[num]);
-//     if (colors[num] === userColors[i])
-//     {
-//       console.log(good);
-//     }
-//   }
-// }
